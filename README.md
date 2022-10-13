@@ -30,3 +30,7 @@ ansible-playbook -i environments/local initdb.yml
 ansible-playbook -i environments/local wipe.yml
 ansible-playbook -i environments/local openwhisk.yml
 ```
+
+```
+docker run -d -p 9095:9095 -e "KAFKA_HOSTS=172.17.0.1:9092" --network=openwhisk_default whisk/user-events
+```
