@@ -1,5 +1,14 @@
 # Systems-Networking-Capstone
 
+## Prerequisite
+
+```bash
+sudo apt install python3-pip
+sudo pip install ansible==4.1.0
+sudo pip install jinja2==3.0.1
+sudo pip install docker==4.1.0
+```
+
 ## Setting up OpenWhisk on Ubuntu server
 
 ```bash
