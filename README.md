@@ -5,16 +5,16 @@
 This setup was created to run on Ubuntu 20.04
 
 ```bash
-sudo apt install python3-pip
+sudo apt install -y python3-pip
 sudo pip install ansible==4.1.0
 sudo pip install jinja2==3.0.1
 sudo pip install docker==4.1.0
-sudo apt install git
-sudo apt install default-jre
+sudo apt install -y git
+sudo apt install -y default-jre
 sudo apt install -y containerd
 sudo apt install -y docker.io
-sudo apt install npm
-sudo apt install net-tools
+sudo apt install -y npm
+sudo apt install -y net-tools
 sudo service docker start
 ```
 
