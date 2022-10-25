@@ -2,11 +2,20 @@
 
 ## Prerequisite
 
+This setup was created to run on Ubuntu 20.04
+
 ```bash
 sudo apt install python3-pip
 sudo pip install ansible==4.1.0
 sudo pip install jinja2==3.0.1
 sudo pip install docker==4.1.0
+sudo apt install git
+sudo apt install default-jre
+sudo apt install -y containerd
+sudo apt install -y docker.io
+sudo apt install npm
+sudo apt install net-tools
+sudo service docker start
 ```
 
 ## Setting up OpenWhisk on Ubuntu server
@@ -21,7 +30,7 @@ cd openwhisk
 
 Build all the Docker images using Gradle
 ```
-./gradlew distDocker
+sudo ./gradlew distDocker
 ```
 
 To deploy OpenWhisk locally using Ansible
@@ -35,11 +44,11 @@ export OW_DB_PROTOCOL=http
 export OW_DB_HOST=172.17.0.1
 export OW_DB_PORT=5984
 
-ansible-playbook -i environments/local setup.yml
-ansible-playbook -i environments/local couchdb.yml
-ansible-playbook -i environments/local initdb.yml
-ansible-playbook -i environments/local wipe.yml
-ansible-playbook -i environments/local openwhisk.yml
+sudo ansible-playbook -i environments/local setup.yml
+sudo ansible-playbook -i environments/local couchdb.yml
+sudo ansible-playbook -i environments/local initdb.yml
+sudo ansible-playbook -i environments/local wipe.yml
+sudo ansible-playbook -i environments/local openwhisk.yml
 ```
 
 Start the user-events container
@@ -63,9 +72,9 @@ scrape_configs:
       - targets: ['IPADDRESS:9095']
 ```
 
-Start prometheus server 
+Start prometheus server with PATH_TO_PROMETHEUS replaces with the absolute path to the prometheus.yml
 ```
-docker run -d -p 9090:9090 -v prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+docker run -d -p 9090:9090 -v PATH_TO_PROMETHEUS:/etc/prometheus/prometheus.yml prom/prometheus
 ```
 
 
