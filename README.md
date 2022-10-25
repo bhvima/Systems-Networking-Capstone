@@ -44,7 +44,7 @@ ansible-playbook -i environments/local openwhisk.yml
 
 Start the user-events container
 ```
-docker run -d -p 9095:9095 -e "KAFKA_HOSTS=172.17.0.1:9093" --network=openwhisk_default whisk/user-events
+docker run -d -p 9095:9095 -e "KAFKA_HOSTS=172.17.0.1:9093" whisk/user-events
 ```
 
 Create a `prometheus.yml` file with the following: (Change IPADDRESS)
@@ -65,7 +65,7 @@ scrape_configs:
 
 Start prometheus server 
 ```
-docker run -d -p 9090:9090 -v prometheus.yml:/etc/prometheus/prometheus.yml --network openwhisk_default prom/prometheus
+docker run -d -p 9090:9090 -v prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
 ```
 
 
